@@ -8,231 +8,728 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Montserrat:wght@400;500;600;700&family=Outfit:wght@300;400&family=Mukta:wght@800&family=Archivo:wght@400&display=swap" rel="stylesheet">
     <style>
-        body {
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+        }
+        
+        body {
             font-family: 'Montserrat', sans-serif;
             color: #000000;
             line-height: 1.6;
             background-color: #ffffff;
+            overflow-x: hidden;
+            word-wrap: break-word;
+            padding-top: 50px;
         }
+        
         .container {
             max-width: 900px;
             margin: 0 auto;
             padding: 20px;
         }
+        
         h1, h2, h3, h4 {
             font-family: 'Poppins', sans-serif;
-            margin: 10px 0;
+            margin: 20px 0 15px 0;
         }
+        
         h1 {
             font-size: 50px;
             font-weight: 800;
             color: #000000;
             text-align: center;
+            line-height: 1.2;
+            word-wrap: break-word;
+            hyphens: auto;
         }
+        
         h2 {
             font-size: 36px;
             font-weight: 700;
             color: #502321;
             text-align: center;
         }
+        
         h3 {
             font-size: 30px;
             font-weight: 700;
             color: #000000;
             text-align: center;
         }
+        
+        h4 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #1D18C7;
+            margin-top: 25px;
+        }
+        
         p {
             font-size: 16px;
             color: #000000;
+            margin-bottom: 15px;
         }
+        
+        ul, ol {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+        
+        li {
+            margin-bottom: 10px;
+        }
+        
         img {
             max-width: 100%;
             height: auto;
             display: block;
             margin: 20px auto;
             border-radius: 7px;
+            border: 2px solid #ddd;
         }
+        
         .button {
             display: block;
-            max-width: 300px;
-            margin: 20px auto;
-            padding: 15px 30px;
+            max-width: 400px;
+            margin: 30px auto;
+            padding: 18px 35px;
             background-color: #AC2815;
             color: #ffffff;
             text-align: center;
             text-decoration: none;
             font-family: 'Montserrat', sans-serif;
-            font-size: 32px;
+            font-size: 24px;
             font-weight: 600;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.86);
-            border-bottom: 2px solid #000000;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(172, 40, 21, 0.4);
+            border-bottom: 3px solid #000000;
+            transition: transform 0.2s, box-shadow 0.2s;
+            min-height: 48px;
+            touch-action: manipulation;
         }
+        
+        .button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(172, 40, 21, 0.5);
+        }
+        
+        .button:active {
+            transform: translateY(0);
+        }
+        
         .section {
-            padding: 40px 0;
+            padding: 50px 0;
         }
+        
         .hero {
-            background-color: #ffffff;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f8f8 100%);
+            padding-top: 30px;
         }
+        
         .testimonials {
             background-color: #512321;
             color: #F0F0F1;
         }
+        
         .testimonials h2 {
             color: #F0F0F1;
         }
-        .faq {
+        
+        .testimonials p {
+            color: #F0F0F1;
+        }
+        
+        .faq-section {
             background-color: #EEEEEE;
         }
+        
         .pricing {
-            background-color: #ffffff;
+            background-color: #CAE8EC;
+            padding: 60px 0;
         }
+        
         .disclaimer {
             background-color: #5E5D5D;
             color: #FFFFFF;
             font-size: 12px;
             text-align: center;
             padding: 20px;
+            font-family: 'Archivo', sans-serif;
         }
+        
         .grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
         }
+        
         .grid-item {
-            flex: 1 1 300px;
-            padding: 20px;
+            padding: 25px;
             border: 1px solid #F0F0F0;
-            border-radius: 5px;
+            border-radius: 8px;
+            background-color: #ffffff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
+        
+        .grid-item h3 {
+            font-family: 'Mukta', sans-serif;
+            font-size: 22px;
+            text-transform: uppercase;
+            color: #000000;
+            margin-bottom: 15px;
+            text-align: left;
+        }
+        
         .highlight {
             color: #163cb8;
             font-weight: bold;
         }
+        
         .warning {
             color: #ff0000;
             font-weight: bold;
         }
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 20px;
-            }
-            h2 {
-                font-size: 18px;
-            }
-            h3 {
-                font-size: 19px;
-            }
-            .button {
-                font-size: 14px;
-            }
-            .container {
-                padding: 10px;
-            }
-            .grid {
-                flex-direction: column;
-            }
+        
+        blockquote {
+            background-color: #f9f9f9;
+            border-left: 4px solid #163cb8;
+            padding: 15px 20px;
+            margin: 20px 0;
+            font-style: italic;
         }
-        /* New styles for pricing strip */
-        .pricing-strip {
-            background-color: #f8f8f8;
-            padding: 20px 0;
-        }
+        
+        /* Pricing Styles */
         .pricing-header {
             text-align: center;
-            font-size: 24px;
+            font-size: 30px;
             font-weight: bold;
-            color: #800000;
-            margin-bottom: 20px;
+            color: #B30000;
+            margin-bottom: 40px;
+            font-family: 'Poppins', sans-serif;
         }
+        
         .pricing-grid {
             display: flex;
             flex-direction: row;
             justify-content: center;
-            gap: 10px;
-            flex-wrap: nowrap;
+            gap: 20px;
+            flex-wrap: wrap;
         }
-        @media (max-width: 768px) {
-            .pricing-grid {
-                flex-direction: column;
-                align-items: center;
-            }
-        }
+        
         .pricing-column {
             background-color: #ffffff;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            padding: 20px;
+            border: 3px solid #001138;
+            border-radius: 10px;
+            padding: 30px 20px;
             text-align: center;
-            max-width: 250px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            max-width: 320px;
+            flex: 1;
+            min-width: 280px;
+            box-shadow: 2px 10px 9px rgba(0,0,0,0.5);
+            position: relative;
         }
+        
+        .pricing-recommended {
+            border-color: #1e3c72;
+            transform: scale(1.05);
+        }
+        
+        .pricing-recommended::before {
+            content: "🏆 MOST POPULAR";
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #ffcc00;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            color: #000;
+        }
+        
         .pricing-title {
-            font-size: 20px;
+            font-size: 22px;
             font-weight: bold;
-            color: #000000;
-            margin-bottom: 10px;
-        }
-        .pricing-subtitle {
-            font-size: 16px;
-            color: #502321;
+            color: #1D18C7;
             margin-bottom: 15px;
+            font-family: 'Poppins', sans-serif;
         }
+        
         .pricing-feature {
-            font-size: 16px;
-            color: #000000;
-            margin: 5px 0;
-        }
-        .pricing-discount {
             font-size: 18px;
+            color: #000000;
+            margin: 8px 0;
+            text-align: left;
+        }
+        
+        .pricing-discount {
+            font-size: 16px;
             font-weight: bold;
             color: #ff0000;
             margin: 10px 0;
         }
+        
         .pricing-normal {
-            font-size: 14px;
+            font-size: 16px;
             color: #888888;
             text-decoration: line-through;
-            margin-bottom: 5px;
+            margin: 10px 0;
         }
+        
         .pricing-today {
-            font-size: 20px;
+            font-size: 24px;
             font-weight: bold;
             color: #008000;
-            margin-bottom: 15px;
+            margin: 15px 0;
         }
+        
         .pricing-best-for {
-            font-size: 14px;
-            color: #502321;
+            font-size: 15px;
+            color: #000000;
             font-style: italic;
             margin-top: 20px;
+            line-height: 1.4;
+            text-align: left;
         }
+        
         .pricing-select {
             background-color: #AC2815;
             color: #ffffff;
-            padding: 10px 20px;
-            border-radius: 5px;
+            padding: 12px 25px;
+            border-radius: 8px;
             text-decoration: none;
             font-weight: bold;
             display: inline-block;
-            margin-top: 10px;
+            margin-top: 15px;
+            font-size: 20px;
+            transition: all 0.3s;
+            border-bottom: 2px solid #000000;
+            min-height: 48px;
+            touch-action: manipulation;
         }
-        .pricing-recommended {
-            background-color: #ffffcc;
-            border: 2px solid #ffcc00;
+        
+        .pricing-select:hover {
+            background-color: #8b1810;
+            transform: translateY(-2px);
+        }
+        
+        .pricing-select:active {
+            transform: translateY(0);
+        }
+        
+        /* Order Form Styles */
+        .order-form-section {
+            background-color: #f2fbf7;
+            padding: 50px 0;
+        }
+        
+        #gform {
+            display: block;
+            width: 90% !important;
+            max-width: 700px;
+            height: 1700px !important;
+            margin: 30px auto;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .risk-free {
+            background-color: #ffffff;
+            padding: 50px 0;
+        }
+        
+        .risk-free h3 {
+            margin-bottom: 20px;
+        }
+        
+        .risk-free img {
+            max-width: 400px;
+            margin: 30px auto;
+            display: block;
+            border: none;
+        }
+        
+        /* Top Banner & Floating Button Styles */
+        .top-banner {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #d32f2f;
+            color: white;
+            text-align: center;
+            padding: 12px 20px;
+            font-size: 18px;
+            font-weight: bold;
+            z-index: 9999;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+        }
+        
+        .top-banner.hidden {
+            transform: translateY(-100%);
+        }
+        
+        .floating-order-btn {
+            position: fixed;
+            top: 60px;
+            left: 20px;
+            background-color: #AC2815;
+            color: white;
+            padding: 8px 16px;
+            font-size: 12px;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 6px;
+            z-index: 9998;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+            transform: scale(0.8);
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .floating-order-btn.scrolled {
+            top: 20px;
+            padding: 12px 24px;
+            font-size: 16px;
+            transform: scale(1);
+        }
+        
+        .floating-order-btn:hover {
+            background-color: #8b1810;
+            transform: scale(1.05);
+        }
+        
+        .floating-order-btn.scrolled:hover {
+            transform: scale(1.1);
+        }
+        
+        
+        /* Mobile Optimizations */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px 12px;
+            }
+            
+            h1 {
+                font-size: 22px;
+                line-height: 1.3;
+                margin: 15px 0 12px 0;
+            }
+            
+            h2 {
+                font-size: 20px;
+                line-height: 1.3;
+                margin: 18px 0 12px 0;
+            }
+            
+            h3 {
+                font-size: 18px;
+                line-height: 1.3;
+                margin: 15px 0 10px 0;
+            }
+            
+            h4 {
+                font-size: 17px;
+                margin-top: 20px;
+            }
+            
+            p {
+                font-size: 15px;
+                line-height: 1.6;
+                margin-bottom: 12px;
+            }
+            
+            .button {
+                font-size: 18px;
+                padding: 16px 20px;
+                max-width: 100%;
+                margin: 25px auto;
+            }
+            
+            .section {
+                padding: 30px 0;
+            }
+            
+            .hero {
+                padding-top: 20px;
+            }
+            
+            img {
+                margin: 15px auto;
+                border-width: 1px;
+            }
+            
+            ul, ol {
+                margin-left: 20px;
+                margin-bottom: 12px;
+                padding-left: 20px;
+            }
+            
+            li {
+                margin-bottom: 8px;
+                font-size: 15px;
+            }
+            
+            blockquote {
+                padding: 12px 15px;
+                margin: 15px 0;
+                font-size: 14px;
+            }
+            
+            /* Pricing Mobile */
+            .pricing-header {
+                font-size: 22px;
+                margin-bottom: 25px;
+            }
+            
+            .pricing-grid {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 20px;
+            }
+            
+            .pricing-column {
+                max-width: 100%;
+                min-width: 100%;
+                padding: 20px 15px;
+            }
+            
+            .pricing-recommended {
+                transform: scale(1);
+            }
+            
+            .pricing-recommended::before {
+                font-size: 11px;
+                padding: 4px 12px;
+                top: -12px;
+            }
+            
+            .pricing-title {
+                font-size: 18px;
+                margin-bottom: 12px;
+            }
+            
+            .pricing-feature {
+                font-size: 15px;
+                margin: 6px 0;
+            }
+            
+            .pricing-discount {
+                font-size: 14px;
+            }
+            
+            .pricing-normal {
+                font-size: 14px;
+            }
+            
+            .pricing-today {
+                font-size: 20px;
+                margin: 12px 0;
+            }
+            
+            .pricing-best-for {
+                font-size: 13px;
+                margin-top: 15px;
+            }
+            
+            .pricing-select {
+                font-size: 18px;
+                padding: 14px 20px;
+                width: 100%;
+                display: block;
+                margin-top: 12px;
+                min-height: 48px;
+            }
+            
+            /* Prevent horizontal scroll */
+            body {
+                overflow-x: hidden;
+            }
+            
+            /* Better text wrapping */
+            h1, h2, h3, h4, p {
+                word-wrap: break-word;
+                overflow-wrap: break-word;
+            }
+            
+            /* Grid Mobile */
+            .grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+                margin-top: 20px;
+            }
+            
+            .grid-item {
+                padding: 20px 15px;
+            }
+            
+            .grid-item h3 {
+                font-size: 17px;
+                margin-bottom: 12px;
+            }
+            
+            /* Risk Free Section Mobile */
+            .risk-free h3 {
+                font-size: 22px;
+                margin-bottom: 20px;
+            }
+            
+            .risk-free img {
+                max-width: 200px;
+                margin: 20px auto;
+            }
+            
+            .risk-free ol {
+                max-width: 100%;
+                padding-left: 30px;
+                font-size: 15px;
+            }
+            
+            /* Order Form Mobile */
+            .order-form-section h2 {
+                font-size: 24px;
+                margin-bottom: 12px;
+            }
+            
+            .order-form-section p {
+                font-size: 15px;
+                margin-bottom: 20px;
+            }
+            
+            #gform {
+                width: 100% !important;
+                height: 2000px !important;
+                margin: 20px auto;
+            }
+            
+            /* FAQ Section Mobile */
+            .faq-section h3 {
+                font-size: 20px;
+            }
+            
+            .faq-section ol {
+                font-size: 15px;
+            }
+            
+            /* Top Banner & Floating Button Mobile */
+            .top-banner {
+                font-size: 14px;
+                padding: 10px 15px;
+            }
+            
+            .floating-order-btn {
+                padding: 6px 12px;
+                font-size: 11px;
+                left: 10px;
+                top: 50px;
+            }
+            
+            .floating-order-btn.scrolled {
+                top: 15px;
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+            
+            body {
+                padding-top: 45px;
+            }
+        }
+        
+        /* Small Mobile Devices */
+        @media (max-width: 480px) {
+            .container {
+                padding: 12px 10px;
+            }
+            
+            h1 {
+                font-size: 20px;
+            }
+            
+            h2 {
+                font-size: 18px;
+            }
+            
+            h3 {
+                font-size: 16px;
+            }
+            
+            h4 {
+                font-size: 15px;
+            }
+            
+            p {
+                font-size: 14px;
+            }
+            
+            .button {
+                font-size: 16px;
+                padding: 14px 18px;
+            }
+            
+            .pricing-header {
+                font-size: 20px;
+            }
+            
+            .pricing-title {
+                font-size: 16px;
+            }
+            
+            .pricing-today {
+                font-size: 18px;
+            }
+            
+            .pricing-select {
+                font-size: 16px;
+                padding: 12px 18px;
+            }
+            
+            .grid-item h3 {
+                font-size: 15px;
+            }
+            
+            .risk-free h3 {
+                font-size: 20px;
+            }
+            
+            .risk-free img {
+                max-width: 180px;
+            }
+            
+            .order-form-section h2 {
+                font-size: 20px;
+            }
         }
     </style>
 </head>
 <body>
 
+    <!-- Top Banner -->
+    <div class="top-banner" id="topBanner">
+        Your choice is pay on delivery, no worries
+    </div>
+
+    <!-- Floating Order Now Button -->
+    <a href="#order-form" class="floating-order-btn" id="floatingBtn">
+        Order Now
+    </a>
+
     <!-- Hero Section -->
     <section class="hero section">
         <div class="container">
             <h1><span style="color: #800000;">Finally, In Nigeria</span>: The 7-In-1 '<span class="highlight">UNIQ Herbal Ulcer Combo Tea</span>' For Healing Stubborn Ulcers, Acid Reflux, Bloating and Indigestion</h1>
-            <p style="text-align: center; font-style: italic; color: #502321; font-weight: 600;">Within 30 Days, That Chest Pain, Morning Nausea (Feeling Like Vomiting In The morning) And Fear Of Eating Food Will Become A Thing Of The Past!</p>
-            <img src="https://jewell.getbrahmishakti.xyz/supp/wp-content/uploads/2025/12/UNIQ-IMAGE-AD.jpg" alt="UNIQ Tea Image">
+            <p style="text-align: center; font-style: italic; color: #502321; font-weight: 600; font-size: 18px;">Within 30 Days, That Chest Pain, Morning Nausea (Feeling Like Vomiting In The Morning) And Fear Of Eating Food Will Become A Thing Of The Past!</p>
+            <img src="https://jewell.getbrahmishakti.xyz/supp/wp-content/uploads/2025/12/UNIQ-IMAGE-AD.jpg" alt="UNIQ Tea Product">
             <a href="#order" class="button">Order Today And Pay On Delivery</a>
         </div>
     </section>
@@ -240,29 +737,36 @@
     <!-- How It Works Section -->
     <section class="section">
         <div class="container">
-            <h2>The 7-Herb Blend Is What You Need To Flush Out H.Pylori and Close Stomach Wounds In Weeks... Without Expensive Swallowing Daily Pills.</h2>
-            <img src="https://jewell.getbrahmishakti.xyz/supp/wp-content/uploads/2025/12/uniq-ingredients.jpg" alt="Ingredients">
-            <h2>How UNIQ Tea Actually Works</h2>
-            <p><b>Why Your Regular Drugs Stopped Working</b></p>
+            <h2>The 7-Herb Blend Is What You Need To Flush Out H.Pylori and Close Stomach Wounds In Weeks... Without Expensive Daily Pills.</h2>
+            <img src="https://jewell.getbrahmishakti.xyz/supp/wp-content/uploads/2025/12/uniq-ingredients.jpg" alt="UNIQ Tea Ingredients">
+            
+            <h2 style="margin-top: 40px;">How UNIQ Tea Actually Works</h2>
+            
+            <h4><b>Why Your Regular Drugs Stopped Working</b></h4>
             <p>You need to understand one thing: The drugs you buy at the pharmacy (Antacids) are designed to do <i>one</i> thing—reduce stomach acid. That is why the pain stops for a few hours.</p>
             <p><b>But Acid is not the enemy.</b> The enemy is the <b>WOUND (The Ulcer)</b> inside your stomach lining.</p>
-            <p>Reducing the acid without healing the wound is like turning off the light so you don’t see a fire burning in your house.</p>
+            <p>Reducing the acid without healing the wound is like turning off the light so you don't see a fire burning in your house.</p>
             <p><strong>The fire is still there!</strong></p>
-            <img src="https://jewell.getbrahmishakti.xyz/supp/wp-content/uploads/2025/12/SKMEI-IMG-1.jpg" alt="How It Works Image">
-            <p>UNIQ Tea is different because it uses a <b>"Search and Seal"</b> technology derived from its unique 7-Herb blend. </p>
-            <p><strong>Here is exactly what</strong> happens when you drink a cup:</p>
-            <h4><b>STAGE 1: The "Cooling" Effect (Stops Bloating & Reflux Instantly)</b></h4>
+            
+            <img src="https://jewell.getbrahmishakti.xyz/supp/wp-content/uploads/2025/12/SKMEI-IMG-1.jpg" alt="Ulcer Explanation">
+            
+            <p>UNIQ Tea is different because it uses a <b>"Search and Seal"</b> technology derived from its unique 7-Herb blend.</p>
+            <p><strong>Here is exactly what happens when you drink a cup:</strong></p>
+            
+            <h4>STAGE 1: The "Cooling" Effect (Stops Bloating & Reflux Instantly)</h4>
             <p>The moment the warm tea hits your stomach, the <b>Ginger Roots</b> and <b>Wild Sage Leaves</b> go to work.</p>
             <ul>
-                <li><b>The Gas Valve:</b> If you suffer from bloating, it’s because gas is trapped. Ginger acts as a natural "carminative"—it relaxes the stomach muscles and forces the trapped gas out (you might burp a few times!).</li>
+                <li><b>The Gas Valve:</b> If you suffer from bloating, it's because gas is trapped. Ginger acts as a natural "carminative"—it relaxes the stomach muscles and forces the trapped gas out (you might burp a few times!).</li>
                 <li><b>The Acid Block:</b> <b>Vervain Whole Plant</b> helps tighten the valve between your stomach and throat, stopping the acid from rising up and burning your chest (Reflux).</li>
             </ul>
-            <h4><b>STAGE 2: The "Bacteria Flush" (Attacks the Root Cause)</b></h4>
+            
+            <h4>STAGE 2: The "Bacteria Flush" (Attacks the Root Cause)</h4>
             <p>Most stubborn ulcers are kept alive by a bacteria called <i>H. Pylori</i>. As long as this bacteria is hiding in your stomach, the wound cannot heal.</p>
             <ul>
                 <li><b>The Sweepers:</b> We used <b>Cassia Occidentalis</b> and <b>Terminalia Catappa Leaves</b> because they are powerful natural cleansers. They don't just sit there; they work to detoxify the gut environment, making it impossible for bad bacteria to survive and multiply.</li>
             </ul>
-            <h4><b>STAGE 3: The "Coat & Heal" (Closes the Wound)</b></h4>
+            
+            <h4>STAGE 3: The "Coat & Heal" (Closes the Wound)</h4>
             <p>This is the most important part. Once the gas is gone and the bacteria is suppressed, the <b>Cocylospermum Tinctorum Root</b> (a powerful traditional healer) works with <b>Verbena Officinalis</b>.</p>
             <ul>
                 <li><b>The Natural Bandage:</b> Think of this blend as a "liquid bandage." It forms a protective herbal mucilage (coating) over the raw, open sore in your stomach lining.</li>
@@ -274,10 +778,10 @@
     <!-- Testimonials Section -->
     <section class="testimonials section">
         <div class="container">
-            <h2>SEE, PEOPLE ARE SAYING AFTER TRYING <span class="highlight">UNIQ TEA</span> EATING AND STARTED WITHOUT FEAR</h2>
-            <img src="https://jewell.getbrahmishakti.xyz/supp/wp-content/uploads/2025/12/WhatsApp-Image-2025-02-13-at-23.05.27_d95661d8.jpg" alt="Testimonial 1">
-            <img src="https://jewell.getbrahmishakti.xyz/supp/wp-content/uploads/2025/12/WhatsApp-Image-2025-02-14-at-09.46.23_18175fe3.jpg" alt="Testimonial 2">
-            <img src="https://jewell.getbrahmishakti.xyz/supp/wp-content/uploads/2025/12/whatsapp_chat-1.png" alt="Testimonial 3">
+            <h2>SEE WHAT PEOPLE ARE SAYING AFTER TRYING <span class="highlight">UNIQ TEA</span> - EATING WITHOUT FEAR!</h2>
+            <img src="https://jewell.getbrahmishakti.xyz/supp/wp-content/uploads/2025/12/WhatsApp-Image-2025-02-13-at-23.05.27_d95661d8.jpg" alt="Customer Testimonial 1">
+            <img src="https://jewell.getbrahmishakti.xyz/supp/wp-content/uploads/2025/12/WhatsApp-Image-2025-02-14-at-09.46.23_18175fe3.jpg" alt="Customer Testimonial 2">
+            <img src="https://jewell.getbrahmishakti.xyz/supp/wp-content/uploads/2025/12/whatsapp_chat-1.png" alt="Customer Testimonial 3">
         </div>
     </section>
 
@@ -285,176 +789,194 @@
     <section class="section">
         <div class="container">
             <h3>WHO EXACTLY IS <span class="highlight">UNIQ</span> TEA FOR?</h3>
-            <p style="text-align: center; font-style: italic;">(And Will It Permanently End The Ulcer So It Doesn't Come Back?)</p>
-            <img src="https://jewell.getbrahmishakti.xyz/supp/wp-content/uploads/2025/12/uniq-ingredients.jpg" alt="Ingredients">
-            <p style="text-align: center;"><em><strong class="warning">"I have had ulcer for 10 years, can this small tea really help me?"</strong></em></p>
-            <p>We get this question a lot:</p>
-            <p>And the simple answer has always been <b>YES</b>.</p>
+            <p style="text-align: center; font-style: italic; font-size: 17px; margin-bottom: 30px;">(And Will It Permanently End The Ulcer So It Doesn't Come Back?)</p>
+            <img src="https://jewell.getbrahmishakti.xyz/supp/wp-content/uploads/2025/12/uniq-ingredients.jpg" alt="UNIQ Tea Ingredients">
+            
+            <p style="text-align: center; font-size: 18px;"><em><strong class="warning">"I have had ulcer for 10 years, can this small tea really help me?"</strong></em></p>
+            
+            <p>We get this question a lot, and the simple answer has always been <b>YES</b>.</p>
             <p>UNIQ Herbal Tea was not created for "mild stomach aches." It was formulated specifically for <b>severe, stubborn, and chronic cases</b> where regular hospital drugs have failed.</p>
             <p><b>If you fall into any of these 4 categories, this tea is PERFECT for you:</b></p>
-            <h3><span style="color: #0000ff;"><b>1. The "Veteran" Ulcer Patient</b></span></h3>
+            
+            <h3 style="text-align: left;"><span style="color: #0000ff;">1. The "Veteran" Ulcer Patient</span></h3>
             <p>You have been treating Gastric or Duodenal Ulcer for years. You have a "pharmacy" in your bag—Omeprazole, Gestid, Mist Mag. They give you relief for a few hours, but the pain <i>always</i> comes back.</p>
             <blockquote><p><b>Why UNIQ Works For You:</b> It doesn't just lower acid. It uses <b>Cocylospermum Root</b> to physically coat and heal the open wound that is causing the pain.</p></blockquote>
-            <h3><span style="color: #0000ff;"><b>2. The "H. Pylori" Victim</b></span></h3>
+            
+            <h3 style="text-align: left;"><span style="color: #0000ff;">2. The "H. Pylori" Victim</span></h3>
             <p>You went to the lab, and the test said <b>"H. Pylori Positive."</b> You took the strong antibiotics (Kit), but the infection came back after a few months.</p>
             <blockquote><p><b>Why UNIQ Works For You:</b> The <b>Cassia Occidentalis</b> and <b>Terminalia Leaves</b> in this tea are natural cleansers. They flush out the bacteria hiding in your gut lining so the infection doesn't return.</p></blockquote>
-            <h3><span style="color: #0000ff;"><b>3. The "Chest Fire" Sufferer (GERD/Reflux)</b></span></h3>
+            
+            <h3 style="text-align: left;"><span style="color: #0000ff;">3. The "Chest Fire" Sufferer (GERD/Reflux)</span></h3>
             <p>You don't just have stomach pain; you have a burning fire moving up your chest to your throat. You struggle to sleep at night because lying down makes it worse. You constantly feel like something is "stuck" in your throat.</p>
             <blockquote><p><b>Why UNIQ Works For You:</b> The <b>Wild Sage</b> and <b>Vervain</b> calm the esophageal valve, stopping the acid from rising up. You will sleep like a baby from the very first night.</p></blockquote>
-            <h3><span style="color: #0000ff;"><b>4. The "Bloated" Belly</b></span></h3>
+            
+            <h3 style="text-align: left;"><span style="color: #0000ff;">4. The "Bloated" Belly</span></h3>
             <p>You feel heavy and full even when you haven't eaten much. Your stomach makes embarrassing noises, and you release gas frequently.</p>
             <blockquote><p><b>Why UNIQ Works For You:</b> <b>Ginger Roots</b> act immediately to break down trapped gas and stop the bloating in minutes.</p></blockquote>
         </div>
     </section>
 
     <!-- Why Different Section -->
-    <section class="faq section">
+    <section class="faq-section section">
         <div class="container">
-            <h3>"But... Will It Work For ME?"</h3>
+            <h3 style="color: #0000ff;">"But... Will It Work For ME?"</h3>
             <img src="https://jewell.getbrahmishakti.xyz/supp/wp-content/uploads/2025/12/bloat-releif-UNIQ.jpg" alt="Bloat Relief">
             <p>We know you are skeptical. You have probably bought "miracle cures" online that turned out to be useless dusty powder.</p>
             <p><b>Here is why UNIQ Tea is different:</b></p>
-            <ol>
+            <ol style="font-size: 17px;">
                 <li><b>It is NAFDAC Approved:</b> We didn't mix this in a backyard. It is certified safe and effective by the Federal Government.</li>
                 <li><b>It is NOT a Painkiller:</b> Painkillers mask the problem. UNIQ Tea heals the <i>source</i> of the problem (The Wound & The Bacteria).</li>
                 <li><b>It Works or You Don't Pay:</b> We are so confident that we offer <b>Payment on Delivery</b>. You see the product before you part with your money.</li>
             </ol>
-            <p style="text-align: center;"><span style="color: #800000;"><b>Stop managing the pain. It’s time to END it <span style="text-decoration: underline;">completely</span>.</b></span></p>
+            <p style="text-align: center; font-size: 20px; margin-top: 30px;"><span style="color: #800000;"><b>Stop managing the pain. It's time to END it <span style="text-decoration: underline;">completely</span>.</b></span></p>
         </div>
     </section>
 
     <!-- FAQ Section -->
-    <section class="section">
+    <section class="section" style="background-color: #123655;">
         <div class="container">
-            <h2>Frequently Asked Questions</h2>
+            <h2 style="color: #F0F0F0; margin-bottom: 40px;">Still Deciding? Read The Top Questions Customers Asked Before Ordering <span class="highlight" >UNIQ HERBAL TEA</span></h2>
             <div class="grid">
                 <div class="grid-item">
-                    <h3 style="font-family: 'Mukta', sans-serif; font-size: 24px; text-transform: uppercase; color: #000000;">"How fast will I see results?"</h3>
-                    <p>Almost Instantly for some symptoms. The bloating and "chest fire" usually calm down within the first 24 hours. However, the internal wound (the ulcer itself) needs time to close. That is why we recommend the <b>2-Month Pack</b> for a total cure.</p>
+                    <h3>"I have bought many 'Herbal Mixtures' online that were just dust. Is this real?"</h3>
+                    <p>We hear you. That is why UNIQ Tea is <b>NAFDAC Approved</b>. We are not hiding. We have passed the Federal Government's safety tests. You are buying a certified remedy, not a roadside mixture.</p>
                 </div>
+                
                 <div class="grid-item">
-                    <h3 style="font-family: 'Mukta', sans-serif; font-size: 24px; text-transform: uppercase; color: #000000;">"Is the tea very bitter?"</h3>
+                    <h3>"Will this make me purge or 'run stomach'?"</h3>
+                    <p><b>NO.</b> This is not "Agbo" that flushes your system aggressively. UNIQ Tea is gentle. It is designed to <b>soothe and coat</b> your stomach, not upset it. You can drink it at work without fear of running to the toilet.</p>
+                </div>
+                
+                <div class="grid-item">
+                    <h3>"I am taking Omeprazole/Gestid. Should I stop?"</h3>
+                    <p>You don't have to stop immediately. You can take UNIQ Tea alongside your medication. However, most of our customers find that after 9 days of drinking the tea, the burning stops, and they naturally reduce the use of hospital drugs.</p>
+                </div>
+                
+                <div class="grid-item">
+                    <h3>"How fast will I see results?"</h3>
+                    <p><b>Almost Instantly</b> for some symptoms. The bloating and "chest fire" usually calm down within the first 24 hours. However, the internal wound (the ulcer itself) needs time to close. That is why we recommend the <b>2-Month Pack</b> for a total cure.</p>
+                </div>
+                
+                <div class="grid-item">
+                    <h3>"Is the tea very bitter?"</h3>
                     <p>It has a natural, earthy herbal taste. It is not sugary, but it is not "bitter leaf" either. It is very easy to drink. If you have a sweet tooth, you can add a little pure honey (but avoid white sugar!).</p>
                 </div>
+                
                 <div class="grid-item">
-                    <h3 style="font-family: 'Mukta', sans-serif; font-size: 24px; text-transform: uppercase; color: #000000;">"Can I finally eat Pepper Soup and Suya after this?"</h3>
+                    <h3>"Can I finally eat Pepper Soup and Suya after this?"</h3>
                     <p><b>YES.</b> The goal of this tea is to heal your stomach lining so it becomes strong again. Once the wound is sealed, you can go back to enjoying your favorite spicy meals without fear.</p>
                 </div>
+                
                 <div class="grid-item">
-                    <h3 style="font-family: 'Mukta', sans-serif; font-size: 24px; text-transform: uppercase; color: #000000;">"I don't have money now. Can I pay when you bring it?"</h3>
-                    <p><b>Yes!</b> We offer <b>Payment on Delivery</b> nationwide. You don't pay until the dispatch rider hands the package to you.</p>
+                    <h3>"I don't have money now. Can I pay when you bring it?"</h3>
+                    <p><b>Yes!</b> We offer <b>Payment on Delivery</b> nationwide. You don't pay until the dispatch rider hands the package to you. This means you can <b>see, touch, and verify</b> the product before paying. No upfront payment required. We trust you, and you can trust us.</p>
                 </div>
+                
                 <div class="grid-item">
-                    <h3 style="font-family: 'Mukta', sans-serif; font-size: 24px; text-transform: uppercase; color: #000000;">"HOW DO I TAKE IT? HOW DO I PREPARE IT ?"</h3>
+                    <h3>"HOW DO I TAKE IT? HOW DO I PREPARE IT?"</h3>
                     <p>It takes less than 15 minutes because you don't need to boil pots of herbs like "Agbo."</p>
-                    <ul>
+                    <ul style="text-align: left; margin-top: 10px;">
                         <li>Put <b>1 Teabag</b> into a cup of freshly boiled hot water.</li>
                         <li>Cover it and let it sit (steep) for <b>5-10 minutes</b>. <i>Don't rush this part—this is when the healing herbs are released into the water.</i></li>
                         <li>Drink it <b>warm</b> on an empty stomach (30 mins before breakfast). This coats your stomach lining for the day.</li>
                     </ul>
-                    <p><b class="warning">DOSAGE</b>: ONCE <b>Daily</b> (Morning is recommended) to see fast changes.</p>
-                    <p><b class="warning">PRO TIP</b>: <em>Do not add milk! If you want it sweet, use a little pure honey. Milk can trigger more acid and reduce the effectiveness of the herbs.</em></p>
+                    <p style="margin-top: 15px;"><b class="warning">DOSAGE:</b> ONCE <b>Daily</b> (Morning is recommended) to see fast changes.</p>
+                    <p><b class="warning">PRO TIP:</b> <em>Do not add milk! If you want it sweet, use a little pure honey. Milk can trigger more acid and reduce the effectiveness of the herbs.</em></p>
                 </div>
+                
                 <div class="grid-item">
-                    <h3 style="font-family: 'Mukta', sans-serif; font-size: 24px; text-transform: uppercase; color: #000000;">"Does it have side effects? Will it make me feel weak or dizzy?"</h3>
+                    <h3>"Does it have side effects? Will it make me feel weak or dizzy?"</h3>
                     <p><b>Absolutely not.</b> Unlike strong hospital antibiotics that can leave you feeling tired, nauseous, or "shaky," UNIQ Tea is <b>100% Natural</b>.</p>
                     <p>You can drink it and drive or go to work safely.</p>
-                    <p><span style="text-decoration: underline; color: #ffcc00;"><strong>NOTE</strong></span>: <em>You may need to visit the bathroom a bit more frequently in the first 3-5 days. But this is <b>GOOD.</b> It means the herbs are flushing out the trapped gas and waste from your system.</em></p>
-                    <p><span style="color: #ffcc00;">(Note: As with all herbal products, we recommend pregnant women consult their doctor before starting).</span></p>
+                    <p style="margin-top: 10px;"><span style="text-decoration: underline; color: #ffcc00;"><strong>NOTE:</strong></span> <em>You may need to visit the bathroom a bit more frequently in the first 3-5 days. But this is <b>GOOD.</b> It means the herbs are flushing out the trapped gas and waste from your system.</em></p>
+                    <p style="color: #ffcc00; margin-top: 10px;"><em>(Note: As with all herbal products, we recommend pregnant women consult their doctor before starting).</em></p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Pricing and Order Section -->
-    <section id="order" class="pricing-strip section">
+    <section id="order" class="pricing section">
         <div class="container">
             <div class="pricing-header">SELECT YOUR TREATMENT PACKAGE</div>
             <div class="pricing-grid">
+                <!-- 1 Month Pack -->
                 <div class="pricing-column">
-                    <div class="pricing-title">The "Starter" Pack (1 Month Supply)</div>
-                    <img src="images/1pack.jpeg" alt="1 Month Supply Pack" style="max-width: 100%; height: auto; margin: 15px auto; display: block; border-radius: 5px;">
-                    <div class="pricing-feature">✔ 1 Box of UNIQ Herbal Tea</div>
-                    <div class="pricing-feature">✔ FREE Nationwide Delivery</div>
-                    <div class="pricing-feature">✔ Payment on Delivery</div>
+                    <div class="pricing-title">The "Starter" Pack<br>(1 Month Supply)</div>
+                    <img src="https://jewell.getbrahmishakti.xyz/supp/wp-content/uploads/2025/12/1-PACK_UNIQ.jpg" alt="1 Month Supply">
+                    <div class="pricing-feature">✅ 1 Box of UNIQ Herbal Tea</div>
+                    <div class="pricing-feature">✅ FREE Nationwide Delivery</div>
+                    <div class="pricing-feature">✅ Payment on Delivery</div>
                     <div class="pricing-normal">(Normal Price: ₦45,000)</div>
                     <div class="pricing-today">TODAY'S DISCOUNT PRICE: ₦30,000</div>
-                    <a href="https://order-link.com" class="pricing-select">Select This Package</a>
-                    <div class="pricing-best-for"><strong>Best For Mild Symptoms & "The Doubters"</strong>. Recommended if you only have occasional heartburn, mild indigestion, or just want to test the product first.</div>
+                    <a href="#order-form" class="pricing-select">Select This Package</a>
+                    <div class="pricing-best-for"><strong>Best For:</strong> Mild Symptoms & "The Doubters". Recommended if you only have occasional heartburn, mild indigestion, or just want to test the product first.</div>
                 </div>
+                
+                <!-- 2 Month Pack (RECOMMENDED) -->
                 <div class="pricing-column pricing-recommended">
-                    <div class="pricing-title">The "Complete" Healing Pack (2 Months Supply)</div>
-                    <img src="images/2pack.jpeg" alt="2 Months Supply Pack" style="max-width: 100%; height: auto; margin: 15px auto; display: block; border-radius: 5px;">
-                    <div class="pricing-feature">✔ 2 Boxes of UNIQ Herbal Tea</div>
-                    <div class="pricing-discount">HUGE DISCOUNT (Save ₦15,000)</div>
-                    <div class="pricing-feature">✔ FREE Nationwide Delivery</div>
-                    <div class="pricing-feature">✔ Payment on Delivery</div>
+                    <div class="pricing-title">The "Complete Healing" Pack<br>(2 Months Supply)</div>
+                    <img src="https://jewell.getbrahmishakti.xyz/supp/wp-content/uploads/2025/12/2-PACK_UNIQ.jpg" alt="2 Months Supply">
+                    <div class="pricing-feature">✅ 2 Boxes of UNIQ Herbal Tea</div>
+                    <div class="pricing-discount">HUGE DISCOUNT (Save ₦15,000!)</div>
+                    <div class="pricing-feature">✅ FREE Nationwide Delivery</div>
+                    <div class="pricing-feature">✅ Payment on Delivery</div>
                     <div class="pricing-normal">(Normal Price: ₦90,000)</div>
                     <div class="pricing-today">TODAY'S DISCOUNT PRICE: ₦45,000</div>
-                    <a href="https://order-link.com" class="pricing-select">Select This Package</a>
-                    <div class="pricing-best-for"><strong>Best For Recurring Ulcer & H. Pylori</strong>. Recommended if you have been treating ulcer for more than 1 year, have tested positive for H. Pylori or experience sharp burning pain when hungry, this combo will completely heal the ulcer and eliminate the bacteria.</div>
+                    <a href="#order-form" class="pricing-select">Select This Package</a>
+                    <div class="pricing-best-for"><strong>Best For:</strong> Recurring Ulcer & H. Pylori. Recommended if you have been treating ulcer for more than 1 year, have tested positive for H. Pylori, or experience sharp pains when hungry. (This ensures you complete the full cleanse & repair cycle).</div>
                 </div>
+                
+                <!-- 3 Month Pack -->
                 <div class="pricing-column">
-                    <div class="pricing-title">The "Total" Restoration Pack (3 Months Supply)</div>
-                    <img src="images/3pack.jpeg" alt="3 Months Supply Pack" style="max-width: 100%; height: auto; margin: 15px auto; display: block; border-radius: 5px;">
-                    <div class="pricing-feature">✔ 3 Boxes of UNIQ Herbal Tea</div>
-                    <div class="pricing-discount">MAXIMUM DISCOUNT (Best Value for Money)</div>
-                    <div class="pricing-feature">✔ FREE Nationwide Delivery</div>
-                    <div class="pricing-feature">✔ Payment on Delivery</div>
+                    <div class="pricing-title">The "Total Restoration" Pack<br>(3 Months Supply)</div>
+                    <img src="https://jewell.getbrahmishakti.xyz/supp/wp-content/uploads/2025/12/3-PACK_UNIQ.jpg" alt="3 Months Supply">
+                    <div class="pricing-feature">✅ 3 Boxes of UNIQ Herbal Tea</div>
+                    <div class="pricing-discount">💎 BEST VALUE (Big Savings)</div>
+                    <div class="pricing-feature">✅ FREE Nationwide Delivery</div>
+                    <div class="pricing-feature">✅ Payment on Delivery</div>
                     <div class="pricing-normal">(Normal Price: ₦135,000)</div>
                     <div class="pricing-today">TODAY'S DISCOUNT PRICE: ₦60,000</div>
-                    <a href="https://order-link.com" class="pricing-select">Select This Package</a>
-                    <div class="pricing-best-for"><strong>Best For Chronic / Bleeding Ulcer & Family Use</strong>. Recommended for severe cases (5+ years), bleeding ulcers, or if you want to buy for yourself and a loved one. This ensures total restoration of the stomach lining and prevents future issues.</div>
+                    <a href="#order-form" class="pricing-select">Select This Package</a>
+                    <div class="pricing-best-for"><strong>Best For:</strong> Chronic / Bleeding Ulcer & Family Use. Recommended for severe cases (5+ years), bleeding ulcers, or if you want to buy for yourself and a loved one. (Ensures total restoration of the stomach lining and prevents future recurrence).</div>
                 </div>
             </div>
         </div>
     </section>
 
-   <!-- Risk-Free Section (Add this right after the </section> of the pricing-strip section, before the footer) -->
+    <!-- Risk-Free Section -->
     <section class="risk-free section">
         <div class="container" style="text-align: center;">
-            <h3 style="color: #800000; font-size: 24px; font-weight: bold; margin-bottom: 30px;">
-                <span style="color: #ffa500;">&#128274;</span> 100% RISK-FREE ORDERING
+            <h3 style="color: #B40000; font-size: 28px; font-weight: bold; margin-bottom: 30px;">
+                🔒 100% RISK-FREE ORDERING
             </h3>
-            <img src="images/guar.jpg" alt="Guaranteed Risk Free Badge" style="max-width: 500px; margin: 30px auto; display: block;">
-            <p style="margin-top: 30px; margin-bottom: 20px;">We know there are many scams online. That is why we do <strong>NOT</strong> ask for your money now.</p>
-            <ol style="text-align: left; max-width: 600px; margin: 20px auto; padding-left: 40px;">
-                <li style="margin-bottom: 10px;"><strong>Fill the form</strong> below</li>
-                <li style="margin-bottom: 10px;"><strong>We ship</strong> the package to your location [Lagos, Abuja, etc]</li>
-                <li style="margin-bottom: 10px;"><strong>You receive</strong> THE PACKAGE open & confirm if this is the product you ordered</li>
-                <li style="margin-bottom: 10px;"><strong>YOU PAY THE RIDER</strong></li>
+            <img src="https://jewell.getbrahmishakti.xyz/supp/wp-content/uploads/2025/12/risk-free-removebg-preview.png" alt="Risk Free Guarantee" style="margin: 30px auto; display: block;">
+            <p style="margin-top: 30px; margin-bottom: 20px; font-size: 17px;">We know there are many scams online. That is why we do <strong>NOT</strong> ask for your money now.</p>
+            <ol style="text-align: left; max-width: 600px; margin: 20px auto; padding-left: 40px; font-size: 17px;">
+                <li style="margin-bottom: 15px;"><strong>Fill the form</strong> below.</li>
+                <li style="margin-bottom: 15px;"><strong>We ship</strong> the package to your location (Lagos, Abuja, PH, etc.).</li>
+                <li style="margin-bottom: 15px;"><strong>You receive</strong> the package, open it, and confirm it is the original UNIQ Tea.</li>
+                <li style="margin-bottom: 15px;"><strong>YOU PAY THE RIDER</strong> only after you are satisfied.</li>
             </ol>
-            <p style="margin-top: 20px; font-weight: bold;">(Free Delivery Applies to ALL Packages Today!)</p>
+            <p style="margin-top: 30px; font-weight: bold; font-size: 18px;">(Free Delivery Applies to ALL Packages Today!)</p>
         </div>
     </section>
 
-    <!-- Order Form Section (Add this right after the </section> of the risk-free section, before the footer) -->
-<section class="order-form section">
-    <div class="container" style="text-align: center;">
-        <h2 style="color: #502321; font-size: 36px; font-weight: 700;">Complete Your Order</h2>
-        <p>Fill out the form below to place your order. We'll contact you within 40 minutes to confirm delivery. Please pick your call</p>
-        <form action="https://order-link.com/submit" method="post" style="max-width: 600px; margin: 0 auto; text-align: left;">
-            <label for="name">Full Name:</label><br>
-            <input type="text" id="name" name="name" required style="width: 100%; padding: 10px; margin: 10px 0;"><br>
+    <!-- Order Form Section -->
+    <section id="order-form" class="order-form-section section">
+        <div class="container" style="text-align: center;">
+            <h2 style="color: #000000; font-size: 36px; font-weight: 700; margin-bottom: 15px;">Complete Your Order</h2>
+            <p style="font-size: 17px; color: #555; margin-bottom: 30px;">Fill out the form below to place your order. We'll contact you within 40 minutes to confirm delivery. <strong>Please pick your call</strong></p>
             
-            <label for="phone">Phone Number:</label><br>
-            <input type="tel" id="phone" name="phone" required style="width: 100%; padding: 10px; margin: 10px 0;"><br>
-            
-            <label for="address">Delivery Address:</label><br>
-            <textarea id="address" name="address" required style="width: 100%; padding: 10px; margin: 10px 0; height: 100px;"></textarea><br>
-            
-            <label for="package">Select Package:</label><br>
-            <select id="package" name="package" required style="width: 100%; padding: 10px; margin: 10px 0;">
-                <option value="">Choose a package</option>
-                <option value="starter">The "Starter" Pack (1 Month Supply) - ₦30,000</option>
-                <option value="complete">The "Complete" Healing Pack (2 Months Supply) - ₦45,000</option>
-                <option value="total">The "Total" Restoration Pack (3 Months Supply) - ₦60,000</option>
-            </select><br>
-            
-            <input type="submit" value="Place Order" class="button" style="font-size: 20px; width: 100%;">
-        </form>
-    </div>
-</section>
+            <!-- Integrated Order Form -->
+            <iframe id="gform" 
+                src="https://janisordermanager.com/embeddedform.php?formid=7384862423&product=Uniq&mbid=janistrainees@gmail.com_IBRAHIM" 
+                frameborder="0" 
+                scrolling="no" 
+                width="100%">
+            </iframe>
+        </div>
+    </section>
 
     <!-- Disclaimer Footer -->
     <footer class="disclaimer">
@@ -462,6 +984,39 @@
             <p>This product is designed to support your health and well-being based on widely recognized principles. Please note that these statements have not been evaluated by NAFDAC, and the information provided is for general knowledge only. For personalized medical advice or concerns about your health, we encourage you to consult with a qualified healthcare professional. While we strive to provide accurate and helpful information, this content is for educational and promotional purposes only and is not a substitute for professional medical care.</p>
         </div>
     </footer>
+
+    <!-- Form Redirect Script -->
+    <script>
+    window.addEventListener('message', function(e) {
+        if (e.data && e.data.event === 'submissionComplete') {
+            window.location.href = "thank-you/index.html";
+        }
+    });
+    </script>
+
+    <!-- Banner and Floating Button Scroll Script -->
+    <script>
+    // Handle banner and floating button scroll behavior
+    const topBanner = document.getElementById('topBanner');
+    const floatingBtn = document.getElementById('floatingBtn');
+    let lastScrollTop = 0;
+    const scrollThreshold = 100;
+
+    window.addEventListener('scroll', function() {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        
+        // Hide banner when scrolling down past threshold
+        if (scrollTop > scrollThreshold) {
+            topBanner.classList.add('hidden');
+            floatingBtn.classList.add('scrolled');
+        } else {
+            topBanner.classList.remove('hidden');
+            floatingBtn.classList.remove('scrolled');
+        }
+        
+        lastScrollTop = scrollTop;
+    });
+    </script>
 
 </body>
 </html>
